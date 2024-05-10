@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TaskMaster</string>
+    <string name="tv_Title">TODO List</string>
+    <string name="add_Item">Add</string>
+</resources>
