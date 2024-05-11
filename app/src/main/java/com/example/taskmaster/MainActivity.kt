@@ -28,15 +28,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var todoAdapter: TodoAdapter
     private lateinit var viewModel: MainActivityData
     private lateinit var count: TextView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var repository: TodoRepository
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        val recyclerView: RecyclerView = findViewById(R.id.rvTodoList)
+        recyclerView = findViewById(R.id.rvTodoList)
 
-        val repository = TodoRepository(TodoDatabase.getInstance(this))
+        repository = TodoRepository(TodoDatabase.getInstance(this))
 
         viewModel = ViewModelProvider(this)[MainActivityData::class.java]
 
@@ -74,6 +76,15 @@ class MainActivity : AppCompatActivity() {
             navigateToAddTodoActivity(it)
             //displayAlert(repository)
         }
+
+        recyclerView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY > oldScrollY) {
+                addItemBtn.hide()
+            } else {
+                addItemBtn.show()
+            }
+        }
+
 
     }
 
