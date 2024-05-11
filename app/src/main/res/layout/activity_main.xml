@@ -108,7 +108,7 @@
                 android:contentDescription="@string/app_name"
                 android:focusable="true"
                 android:src="@drawable/todo_add"
-                android:tint="@color/blue"
+                android:tint="@color/light_blue"
                 app:backgroundTint="@color/background"
                 app:backgroundTintMode="src_atop"
                 app:fabCustomSize="65dp"

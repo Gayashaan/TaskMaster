@@ -12,12 +12,15 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="@color/background"
+        android:backgroundTintMode="src_atop"
         app:cardBackgroundColor="@color/background"
         app:cardCornerRadius="15dp"
+        app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/light_blue"
         app:strokeColor="@color/transparent"
         app:strokeWidth="1dp">
 
