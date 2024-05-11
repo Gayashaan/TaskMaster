@@ -44,6 +44,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="12dp"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -92,6 +95,9 @@
                     android:text="@string/backBtn"
                     android:textColor="@color/white"
                     android:textSize="16sp"
+                    app:icon="@drawable/back"
+                    app:iconPadding="0dp"
+                    app:iconTintMode="src_atop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -106,6 +112,9 @@
                     android:text="@string/add_Item"
                     android:textColor="@color/white"
                     android:textSize="16sp"
+                    app:icon="@drawable/todo_add"
+                    app:iconPadding="0dp"
+                    app:iconTintMode="src_atop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>

@@ -26,6 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="352dp"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="12dp"
         android:backgroundTint="@color/light_blue"
         android:padding="10dp"
@@ -95,6 +96,8 @@
                     android:text="@string/backBtn"
                     android:textColor="@color/white"
                     android:textSize="16sp"
+                    app:icon="@drawable/back"
+                    app:iconPadding="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -109,6 +112,9 @@
                     android:text="@string/EditTask"
                     android:textColor="@color/white"
                     android:textSize="16sp"
+                    app:icon="@drawable/edit"
+                    app:iconPadding="1dp"
+                    app:iconTintMode="src_atop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>
