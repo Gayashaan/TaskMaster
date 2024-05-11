@@ -121,7 +121,7 @@
                 app:layout_constraintVertical_bias="0.972"
                 app:maxImageSize="32dp"
                 app:rippleColor="@color/light_blue"
-                app:useCompatPadding="true" />
+                app:useCompatPadding="false" />
 
             <TextView
                 android:id="@+id/msg"
