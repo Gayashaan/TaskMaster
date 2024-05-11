@@ -9,6 +9,7 @@ import com.example.taskmaster.R
 class TodoViewHolder(view: View): RecyclerView.ViewHolder(view) {
     val cbTodo: CheckBox = view.findViewById(R.id.cbTodo)
     val ivDelete: ImageView = view.findViewById(R.id.ivDelete)
+    val card: View = view.findViewById(R.id.listCardView)
 
 
 }

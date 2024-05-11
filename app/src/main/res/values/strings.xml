@@ -4,5 +4,6 @@
     <string name="add_Item">Add</string>]
     <string name="backBtn">Back</string>
     <string name="addTask">Add New Task</string>
+    <string name="EditTask">Update Task</string>
 
 </resources>

@@ -2,10 +2,12 @@ package com.example.taskmaster.adapter
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmaster.R
+import com.example.taskmaster.UpdateTodoActivity
 import com.example.taskmaster.entities.Todo
 import com.example.taskmaster.repositories.TodoRepository
 import com.example.taskmaster.viewholder.TodoViewHolder
@@ -35,7 +37,18 @@ class TodoAdapter(items: List<Todo>, repo: TodoRepository,
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
+
+        val task = todoItems[position]
         holder.cbTodo.text = todoItems[position].item
+
+        holder.card.setOnClickListener() {
+            val context = holder.itemView.context
+            val intent = Intent(context, UpdateTodoActivity::class.java)
+            intent.putExtra("TODO_ID", task.id)
+            context.startActivity(intent)
+        }
+
+
         holder.ivDelete.setOnClickListener() {
 
             val builder = AlertDialog.Builder(context)

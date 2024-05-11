@@ -10,11 +10,11 @@
 
 
     <TextView
-        android:id="@+id/addTaskHeader"
+        android:id="@+id/EditTaskHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
-        android:text="@string/addTask"
+        android:text="@string/EditTask"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.148"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/addTodoCardView"
+        android:id="@+id/EditTodoCardView"
         android:layout_width="369dp"
         android:layout_height="352dp"
         android:layout_marginStart="20dp"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addTaskHeader"
+        app:layout_constraintTop_toBottomOf="@+id/EditTaskHeader"
         app:layout_constraintVertical_bias="0.03"
         app:strokeColor="@color/transparent"
         app:strokeWidth="1dp">
@@ -49,7 +49,7 @@
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/titleInput"
+                android:id="@+id/update_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -61,7 +61,7 @@
                 android:textColorLink="@color/background" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/descriptionInput"
+                android:id="@+id/update_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -103,7 +103,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/blue"
                     android:elevation="8dp"
-                    android:text="@string/add_Item"
+                    android:text="@string/EditTask"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
