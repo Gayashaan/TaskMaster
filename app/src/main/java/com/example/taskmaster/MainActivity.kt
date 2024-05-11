@@ -28,16 +28,19 @@ class MainActivity : AppCompatActivity() {
     //create a lateinit variable
     private lateinit var todoAdapter: TodoAdapter
     private lateinit var viewModel: MainActivityData
-    private lateinit var count: TextView
+    private lateinit var countTodos: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var repository: TodoRepository
     private lateinit var addItemBtn: FloatingActionButton
+    private lateinit var msgHeader: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        //initialize the message header
+        msgHeader = findViewById(R.id.msg)
         //initialize the recycler view
         recyclerView = findViewById(R.id.rvTodoList)
         //initialize the repository
@@ -47,6 +50,11 @@ class MainActivity : AppCompatActivity() {
 
         //observe the data in the view model
         viewModel.data.observe(this){
+            if(it.isEmpty()) {
+                msgHeader.visibility = View.VISIBLE
+            }else{
+                msgHeader.visibility = View.GONE
+            }
             todoAdapter = TodoAdapter(it, repository, viewModel)
             recyclerView.adapter = todoAdapter
             recyclerView.layoutManager = LinearLayoutManager(this)
@@ -55,9 +63,12 @@ class MainActivity : AppCompatActivity() {
         //display the totol number of todos
         viewModel.count.observe(this){
             //initialize the count text view
-            count = findViewById<Button>(R.id.count)
+            countTodos = findViewById<Button>(R.id.count)
+            if(it == 0){
+                countTodos.visibility = View.GONE
+            }
             //set the text of the count text view
-            count.text = "Total Todos: $it"
+            countTodos.text = "Total Todos: $it"
         }
 
         //get the total number of todos
