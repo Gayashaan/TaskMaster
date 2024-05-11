@@ -53,9 +53,9 @@ class AddTodoActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     viewModel.setData(data)
                 }
-                Toast.makeText(this@AddTodoActivity, "Task Added Successfully", Toast.LENGTH_SHORT).show()
-                backToMainActivity(View(this@AddTodoActivity))
             }
+            Toast.makeText(this, "Task Added successfully", Toast.LENGTH_SHORT).show()
+            backToMainActivity(View(this@AddTodoActivity))
         }
 
     }
