@@ -15,5 +15,5 @@ TaskMaster is a task management developed using kotlin. It provides users with t
 - Gradle
 
 ## Owner
-Gayashaan Krishnamoorthy ([Gayashaan]([https://github.com/sathninduk](https://github.com/Gayashaan)))
+Gayashaan Krishnamoorthy
 
