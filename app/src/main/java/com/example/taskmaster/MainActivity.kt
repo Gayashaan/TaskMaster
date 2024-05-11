@@ -25,24 +25,27 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
+    //create a lateinit variable
     private lateinit var todoAdapter: TodoAdapter
     private lateinit var viewModel: MainActivityData
     private lateinit var count: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var repository: TodoRepository
+    private lateinit var addItemBtn: FloatingActionButton
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        //initialize the recycler view
         recyclerView = findViewById(R.id.rvTodoList)
-
+        //initialize the repository
         repository = TodoRepository(TodoDatabase.getInstance(this))
-
+        //initialize the view model
         viewModel = ViewModelProvider(this)[MainActivityData::class.java]
 
-
+        //observe the data in the view model
         viewModel.data.observe(this){
             todoAdapter = TodoAdapter(it, repository, viewModel)
             recyclerView.adapter = todoAdapter
@@ -51,10 +54,14 @@ class MainActivity : AppCompatActivity() {
 
         //display the totol number of todos
         viewModel.count.observe(this){
+            //initialize the count text view
             count = findViewById<Button>(R.id.count)
+            //set the text of the count text view
             count.text = "Total Todos: $it"
         }
 
+        //get the total number of todos
+        //getTodosCount() have to run on a background thread as they are suspend functions
         CoroutineScope(Dispatchers.IO).launch {
             val count = repository.getTodosCount()
             runOnUiThread(){
@@ -62,21 +69,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        //get all the todos
         CoroutineScope(Dispatchers.IO).launch {
             val data = repository.getAllTodos()
-
             runOnUiThread(){
                 viewModel.setData(data)
             }
         }
 
-        val addItemBtn: FloatingActionButton = findViewById(R.id.btnAdd)
+        //initialize the add item button
+        addItemBtn = findViewById(R.id.btnAdd)
 
+        //set the on click listener for the add item button
         addItemBtn.setOnClickListener{
             navigateToAddTodoActivity(it)
             //displayAlert(repository)
         }
 
+        //hide the add item button when the user scrolls down
         recyclerView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY > oldScrollY) {
                 addItemBtn.hide()
@@ -88,6 +98,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //navigate to the add todo activity
     fun navigateToAddTodoActivity(v: View){
         val intent = Intent(this, AddTodoActivity::class.java)
         startActivity(intent)

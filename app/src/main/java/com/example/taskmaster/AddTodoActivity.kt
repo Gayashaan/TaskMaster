@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -18,17 +19,19 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AddTodoActivity : AppCompatActivity() {
+    //create a lateinit variable
     private lateinit var viewModel: MainActivityData
     private lateinit var title: EditText
     private lateinit var description: EditText
     private lateinit var addBtn: Button
     private lateinit var backBtn: Button
+    private lateinit var repository: TodoRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_add_todo)
 
-        val repository = TodoRepository(TodoDatabase.getInstance(this))
+        repository = TodoRepository(TodoDatabase.getInstance(this))
 
         viewModel = ViewModelProvider(this)[MainActivityData::class.java]
 
@@ -50,6 +53,7 @@ class AddTodoActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     viewModel.setData(data)
                 }
+                Toast.makeText(this@AddTodoActivity, "Task Added Successfully", Toast.LENGTH_SHORT).show()
                 backToMainActivity(View(this@AddTodoActivity))
             }
         }
