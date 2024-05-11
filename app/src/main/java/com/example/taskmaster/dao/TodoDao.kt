@@ -1,13 +1,14 @@
-package com.example.taskmaster.database
+package com.example.taskmaster.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.taskmaster.entities.Todo
 
 
-@Dao //todo data access object
+@Dao
 interface TodoDao {
 
     @Insert
@@ -19,7 +20,7 @@ interface TodoDao {
     @Update
     suspend fun update(todo: Todo)
 
-    @Query("SELECT * FROM table_todo")
+    @Query("SELECT * FROM Todo")
     fun getAllTodos(): List<Todo>
 
 
