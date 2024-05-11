@@ -6,12 +6,18 @@ import androidx.lifecycle.ViewModel
 import com.example.taskmaster.entities.Todo
 
 class MainActivityData: ViewModel() {
+    private val _count = MutableLiveData<Int>()
     private val _data = MutableLiveData<List<Todo>>()
 
     val data: LiveData<List<Todo>> = _data
+    val count: LiveData<Int> = _count
 
     fun setData(data: List<Todo>){
         _data.value = data
+    }
+
+    fun setCount(count: Int){
+        _count.value = count
     }
 
 }

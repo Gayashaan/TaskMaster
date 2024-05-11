@@ -13,7 +13,7 @@
         android:id="@+id/EditTaskHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="64dp"
         android:text="@string/EditTask"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/background"
-                android:text="Title"
+                android:hint="@string/title_des"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/background"
                 android:textColorLink="@color/background" />
@@ -67,10 +67,13 @@
                 android:layout_weight="2"
                 android:height="100dp"
                 android:backgroundTint="@color/background"
+                android:hint="@string/multiLine_des"
                 android:inputType="textMultiLine"
                 android:scrollbars="vertical"
-                android:text="Note"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/background"
+                android:textColorHint="@color/background"
+                android:textColorLink="@color/background" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,7 +94,7 @@
                     android:onClick="backToMainActivity"
                     android:text="@string/backBtn"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -105,7 +108,7 @@
                     android:elevation="8dp"
                     android:text="@string/EditTask"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>

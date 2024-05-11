@@ -5,5 +5,8 @@
     <string name="backBtn">Back</string>
     <string name="addTask">Add New Task</string>
     <string name="EditTask">Update Task</string>
+    <string name="multiLine_des">Description</string>
+    <string name="title_des">Title</string>
+    <string name="count">Total Todos: </string>
 
 </resources>

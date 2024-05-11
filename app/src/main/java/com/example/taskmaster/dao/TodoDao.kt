@@ -21,12 +21,13 @@ interface TodoDao {
     suspend fun update(title: String, description: String, id: Int)
 
     @Query("SELECT * FROM Todo")
-    fun getAllTodos(): List<Todo>
+    suspend fun getAllTodos(): List<Todo>
 
     @Query("SELECT * FROM Todo WHERE id = :id")
-    fun getTodoById(id: Int): Todo
+    suspend fun getTodoById(id: Int): Todo
 
-
+    @Query("SELECT COUNT(*) FROM Todo")
+    suspend fun getTodosCount(): Int
 
 
 }
