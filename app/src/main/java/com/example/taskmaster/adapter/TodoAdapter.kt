@@ -62,9 +62,11 @@ class TodoAdapter(items: List<Todo>, repo: TodoRepository,
                 CoroutineScope(Dispatchers.IO).launch {
                     repository.delete(todoItems[position])
                     todoItems = repository.getAllTodos()
+                    val count = repository.getTodosCount()
                     //change the context to main because we are updating the ui
                     withContext(Dispatchers.Main) {
                         viewModel.setData(todoItems)
+                        viewModel.setCount(count)
                     }
                 }
             }
