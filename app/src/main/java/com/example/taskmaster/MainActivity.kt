@@ -67,36 +67,36 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun displayAlert(repository: TodoRepository){
-        val builder = AlertDialog.Builder(this)
-
-        //todo add the string to resources R.string.add_task STRING
-        builder.setTitle("Add Task")
-        builder.setMessage("Enter the task to be added")
-
-        val input = android.widget.EditText(this)
-        input.inputType = InputType.TYPE_CLASS_TEXT
-        builder.setView(input)
-
-        builder.setPositiveButton("ok"){
-            dialog, which ->
-            val item = input.text.toString()
-            CoroutineScope(Dispatchers.IO).launch {
-                repository.insert(Todo(item))
-                val data = repository.getAllTodos()
-                runOnUiThread() {
-                    viewModel.setData(data)
-                }
-            }
-        }
-
-        builder.setNegativeButton("cancel"){
-            dialog, which ->
-            dialog.cancel()
-        }
-
-        val alertDialog = builder.create()
-        alertDialog.show()
-
-    }
+//    private fun displayAlert(repository: TodoRepository){
+//        val builder = AlertDialog.Builder(this)
+//
+//        //todo add the string to resources R.string.add_task STRING
+//        builder.setTitle("Add Task")
+//        builder.setMessage("Enter the task to be added")
+//
+//        val input = android.widget.EditText(this)
+//        input.inputType = InputType.TYPE_CLASS_TEXT
+//        builder.setView(input)
+//
+//        builder.setPositiveButton("ok"){
+//            dialog, which ->
+//            val item = input.text.toString()
+//            CoroutineScope(Dispatchers.IO).launch {
+//                repository.insert(Todo(item))
+//                val data = repository.getAllTodos()
+//                runOnUiThread() {
+//                    viewModel.setData(data)
+//                }
+//            }
+//        }
+//
+//        builder.setNegativeButton("cancel"){
+//            dialog, which ->
+//            dialog.cancel()
+//        }
+//
+//        val alertDialog = builder.create()
+//        alertDialog.show()
+//
+//    }
 }

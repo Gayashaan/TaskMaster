@@ -82,7 +82,7 @@
                 android:textAlignment="center">
 
                 <Button
-                    android:id="@+id/btnBack"
+                    android:id="@+id/backBtn"
                     android:layout_width="54dp"
                     android:layout_height="54dp"
                     android:layout_margin="5dp"
@@ -96,7 +96,7 @@
                     app:layout_constraintEnd_toEndOf="parent" />
 
                 <Button
-                    android:id="@+id/addTaskBtn"
+                    android:id="@+id/updateBtn"
                     android:layout_width="54dp"
                     android:layout_height="54dp"
                     android:layout_margin="5dp"

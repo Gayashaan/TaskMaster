@@ -17,11 +17,16 @@ interface TodoDao {
     @Delete
     suspend fun delete(todo: Todo)
 
-    @Update
-    suspend fun update(todo: Todo)
+    @Query("UPDATE Todo SET title = :title, description = :description WHERE id = :id")
+    suspend fun update(title: String, description: String, id: Int)
 
     @Query("SELECT * FROM Todo")
     fun getAllTodos(): List<Todo>
+
+    @Query("SELECT * FROM Todo WHERE id = :id")
+    fun getTodoById(id: Int): Todo
+
+
 
 
 }

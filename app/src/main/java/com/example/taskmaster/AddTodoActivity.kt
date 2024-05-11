@@ -15,6 +15,7 @@ import com.example.taskmaster.viewmodel.MainActivityData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AddTodoActivity : AppCompatActivity() {
     private lateinit var viewModel: MainActivityData
@@ -42,7 +43,15 @@ class AddTodoActivity : AppCompatActivity() {
 
 
         addBtn.setOnClickListener {
-            addTodoItem(title.text.toString(), repository)
+            CoroutineScope(Dispatchers.IO).launch {
+                repository.insert(Todo(title.text.toString(),description.text.toString()))
+                val data = repository.getAllTodos()
+                //change the context to main because we are updating the ui
+                withContext(Dispatchers.Main) {
+                    viewModel.setData(data)
+                }
+                backToMainActivity(View(this@AddTodoActivity))
+            }
         }
 
     }
@@ -52,12 +61,5 @@ class AddTodoActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
-    }
-
-    private fun addTodoItem(item: String, repository: TodoRepository) {
-        CoroutineScope(Dispatchers.IO).launch {
-            repository.insert(Todo(item))
-            backToMainActivity(View(this@AddTodoActivity))
-        }
     }
 }

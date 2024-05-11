@@ -39,7 +39,11 @@ class TodoAdapter(items: List<Todo>, repo: TodoRepository,
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
 
         val task = todoItems[position]
-        holder.cbTodo.text = todoItems[position].item
+
+        //set the data to the view this is where we bind the data to the view
+        holder.title.text = task.title
+        holder.description.text = task.description
+
 
         holder.card.setOnClickListener() {
             val context = holder.itemView.context
@@ -50,9 +54,7 @@ class TodoAdapter(items: List<Todo>, repo: TodoRepository,
 
 
         holder.ivDelete.setOnClickListener() {
-
             val builder = AlertDialog.Builder(context)
-
             builder.setTitle("Delete Todo")
             builder.setMessage("Are you sure you want to delete this todo?")
             builder.setPositiveButton("Yes") { _, _ ->
@@ -64,13 +66,11 @@ class TodoAdapter(items: List<Todo>, repo: TodoRepository,
                     withContext(Dispatchers.Main) {
                         viewModel.setData(todoItems)
                     }
-
                 }
             }
             builder.setNegativeButton("No") { dialog, _ ->
                 dialog.cancel()
             }
-
             val alertDialog = builder.create()
             alertDialog.show()
         }
