@@ -39,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+
+        //initialize the count text view
+        countTodos = findViewById<Button>(R.id.count)
         //initialize the message header
         msgHeader = findViewById(R.id.msg)
         //initialize the recycler view
@@ -62,8 +65,6 @@ class MainActivity : AppCompatActivity() {
 
         //display the totol number of todos
         viewModel.count.observe(this){
-            //initialize the count text view
-            countTodos = findViewById<Button>(R.id.count)
             if(it == 0){
                 countTodos.visibility = View.GONE
             }
