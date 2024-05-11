@@ -23,11 +23,10 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/EditTodoCardView"
-        android:layout_width="369dp"
+        android:layout_width="0dp"
         android:layout_height="352dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:backgroundTint="@color/light_blue"
         android:padding="10dp"
         app:cardBackgroundColor="@color/light_blue"
@@ -37,7 +36,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EditTaskHeader"
-        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/transparent"
         app:strokeWidth="1dp">
 
@@ -92,6 +91,7 @@
                     android:onClick="backToMainActivity"
                     android:text="@string/backBtn"
                     android:textColor="@color/white"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -105,6 +105,7 @@
                     android:elevation="8dp"
                     android:text="@string/EditTask"
                     android:textColor="@color/white"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>
