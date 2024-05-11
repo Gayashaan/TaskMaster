@@ -8,5 +8,6 @@
     <string name="multiLine_des">Description</string>
     <string name="title_des">Title</string>
     <string name="count">Total Todos: </string>
+    <string name="msg">No Todos Added Yet</string>
 
 </resources>
