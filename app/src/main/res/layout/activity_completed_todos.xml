@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardHeader"
+        android:id="@+id/cardHeaderCompleted"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginStart="10dp"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif"
-                android:text="@string/app_name"
+                android:text="@string/tv_Completed"
                 android:textColor="@color/white"
                 android:textSize="34sp"
                 android:textStyle="bold"
@@ -48,7 +48,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/listCardView"
+        android:id="@+id/listCardViewCompleted"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
@@ -61,12 +61,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardHeader"
+        app:layout_constraintTop_toBottomOf="@+id/cardHeaderCompleted"
         app:strokeColor="@color/transparent"
         app:strokeWidth="1dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTodoList"
+            android:id="@+id/rvCompletedTodoList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
@@ -84,7 +84,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/count"
+                android:id="@+id/countCompleted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -98,7 +98,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnAdd"
+                android:id="@+id/btnMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -107,7 +107,7 @@
                 android:clickable="true"
                 android:contentDescription="@string/app_name"
                 android:focusable="true"
-                android:src="@drawable/todo_add"
+                android:src="@drawable/back"
                 android:tint="@color/light_blue"
                 app:backgroundTint="@color/background"
                 app:backgroundTintMode="src_atop"
@@ -123,34 +123,8 @@
                 app:rippleColor="@color/light_blue"
                 app:useCompatPadding="false" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnCompleted"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="16dp"
-                android:clickable="true"
-                android:contentDescription="@string/app_name"
-                android:focusable="true"
-                android:src="@drawable/completed"
-                android:tint="@color/blue"
-                app:backgroundTint="@color/blue"
-                app:backgroundTintMode="src_atop"
-                app:fabCustomSize="40dp"
-                app:fabSize="normal"
-                app:layout_constraintBottom_toTopOf="@+id/btnAdd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.953"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                app:maxImageSize="28dp"
-                app:rippleColor="@color/light_blue"
-                app:useCompatPadding="false" />
-
             <TextView
-                android:id="@+id/msg"
+                android:id="@+id/msgCompleted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/msg"

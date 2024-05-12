@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var repository: TodoRepository
     private lateinit var addItemBtn: FloatingActionButton
+    private lateinit var completedBtn: FloatingActionButton
     private lateinit var msgHeader: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -40,6 +41,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        //initialize the add item button
+        addItemBtn = findViewById(R.id.btnAdd)
+        //initialize the completed button
+        completedBtn = findViewById(R.id.btnCompleted)
         //initialize the count text view
         countTodos = findViewById<Button>(R.id.count)
         //initialize the message header
@@ -54,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         //hide the message header and the count text view
         msgHeader.visibility = View.GONE
         countTodos.visibility = View.GONE
+        completedBtn.visibility = View.GONE
 
         //observe the data in the view model
         viewModel.data.observe(this){
@@ -78,6 +84,15 @@ class MainActivity : AppCompatActivity() {
             countTodos.text = "Total Todos: $it"
         }
 
+        //display the totol number of todos
+        viewModel.completedCount.observe(this){
+            if(it == 0){
+                completedBtn.visibility = View.GONE
+            }else{
+                completedBtn.visibility = View.VISIBLE
+            }
+        }
+
         //get the total number of todos
         //getTodosCount() have to run on a background thread as they are suspend functions
         CoroutineScope(Dispatchers.IO).launch {
@@ -95,12 +110,21 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //initialize the add item button
-        addItemBtn = findViewById(R.id.btnAdd)
+        CoroutineScope(Dispatchers.IO).launch {
+            val countCompleted = repository.getCompletedTodos().size
+            runOnUiThread(){
+                viewModel.setCompletedCount(countCompleted)
+            }
+        }
 
         //set the on click listener for the add item button
         addItemBtn.setOnClickListener{
             navigateToAddTodoActivity(it)
+            //displayAlert(repository)
+        }
+
+        completedBtn.setOnClickListener{
+            navigateToCompletedTodos(it)
             //displayAlert(repository)
         }
 
@@ -119,6 +143,11 @@ class MainActivity : AppCompatActivity() {
     //navigate to the add todo activity
     fun navigateToAddTodoActivity(v: View){
         val intent = Intent(this, AddTodoActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun navigateToCompletedTodos(v: View){
+        val intent = Intent(this, CompletedTodos::class.java)
         startActivity(intent)
     }
 

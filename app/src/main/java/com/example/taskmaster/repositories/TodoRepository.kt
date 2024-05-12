@@ -10,4 +10,9 @@ class TodoRepository(private val db: TodoDatabase) {
     suspend fun getAllTodos():List<Todo> = db.getTodoDao().getAllTodos()
     suspend fun getTodoById(id: Int): Todo = db.getTodoDao().getTodoById(id)
     suspend fun getTodosCount(): Int = db.getTodoDao().getTodosCount()
+    suspend fun getCompletedTodos(): List<Todo> = db.getTodoDao().getCompletedTodos()
+    suspend fun getUncompletedTodos(): List<Todo> = db.getTodoDao().getUncompletedTodos()
+    suspend fun markAsCompleted(id: Int) = db.getTodoDao().markAsCompleted(id)
+    suspend fun markAsInComplete(id: Int) = db.getTodoDao().markAsUncompleted(id)
+
 }

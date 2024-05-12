@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmaster.R
 
 class TodoViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    val tdCheckbox: CheckBox = view.findViewById(R.id.td_checkbox)
     val title: TextView = view.findViewById(R.id.td_title)
     val description: TextView = view.findViewById(R.id.td_description)
     val ivDelete: ImageView = view.findViewById(R.id.ivDelete)
