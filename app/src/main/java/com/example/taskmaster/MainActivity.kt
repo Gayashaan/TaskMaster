@@ -51,6 +51,10 @@ class MainActivity : AppCompatActivity() {
         //initialize the view model
         viewModel = ViewModelProvider(this)[MainActivityData::class.java]
 
+        //hide the message header and the count text view
+        msgHeader.visibility = View.GONE
+        countTodos.visibility = View.GONE
+
         //observe the data in the view model
         viewModel.data.observe(this){
             if(it.isEmpty()) {
@@ -67,6 +71,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.count.observe(this){
             if(it == 0){
                 countTodos.visibility = View.GONE
+            }else{
+                countTodos.visibility = View.VISIBLE
             }
             //set the text of the count text view
             countTodos.text = "Total Todos: $it"
