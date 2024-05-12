@@ -26,6 +26,7 @@ class UpdateTodoActivity : AppCompatActivity() {
     private lateinit var description: EditText
     private lateinit var updateBtn: Button
     private lateinit var backBtn: Button
+    private lateinit var repository: TodoRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,7 @@ class UpdateTodoActivity : AppCompatActivity() {
         // get task ID from intent extras
         val taskId = intent.getIntExtra("TODO_ID", -1)
 
-        val repository = TodoRepository(TodoDatabase.getInstance(this))
+        repository = TodoRepository(TodoDatabase.getInstance(this))
         viewModel = ViewModelProvider(this)[MainActivityData::class.java]
 
         title = findViewById(R.id.update_title)
