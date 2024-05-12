@@ -33,14 +33,17 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/app_name"
                 android:textColor="@color/white"
                 android:textSize="34sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.071"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -69,10 +72,10 @@
             android:id="@+id/rvTodoList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -82,6 +85,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
 
             <TextView
                 android:id="@+id/count"
@@ -119,7 +124,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.972"
-                app:maxImageSize="32dp"
+                app:maxImageSize="38dp"
                 app:rippleColor="@color/light_blue"
                 app:useCompatPadding="false" />
 
@@ -129,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="16dp"
+                android:layout_margin="5dp"
                 android:clickable="true"
                 android:contentDescription="@string/app_name"
                 android:focusable="true"
@@ -137,15 +142,15 @@
                 android:tint="@color/blue"
                 app:backgroundTint="@color/blue"
                 app:backgroundTintMode="src_atop"
-                app:fabCustomSize="40dp"
-                app:fabSize="normal"
+                app:fabCustomSize="45dp"
+                app:fabSize="auto"
                 app:layout_constraintBottom_toTopOf="@+id/btnAdd"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.953"
+                app:layout_constraintHorizontal_bias="0.912"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                app:maxImageSize="28dp"
+                app:layout_constraintVertical_bias="0.981"
+                app:maxImageSize="30dp"
                 app:rippleColor="@color/light_blue"
                 app:useCompatPadding="false" />
 
