@@ -51,9 +51,10 @@ class UpdateTodoActivity : AppCompatActivity() {
         // get the task by ID
         CoroutineScope(Dispatchers.IO).launch {
             val data = repository.getTodoById(taskId)
-            title.setText(data.title)
-            description.setText(data.description)
-
+            withContext(Dispatchers.Main) {
+                title.setText(data.title)
+                description.setText(data.description)
+            }
         }
 
         // update the task

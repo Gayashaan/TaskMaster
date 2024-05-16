@@ -22,6 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -97,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         //getTodosCount() have to run on a background thread as they are suspend functions
         CoroutineScope(Dispatchers.IO).launch {
             val count = repository.getTodosCount()
-            runOnUiThread(){
+            withContext(Dispatchers.Main){
                 viewModel.setCount(count)
             }
         }
@@ -105,14 +106,14 @@ class MainActivity : AppCompatActivity() {
         //get all the todos
         CoroutineScope(Dispatchers.IO).launch {
             val data = repository.getAllTodos()
-            runOnUiThread(){
+            withContext(Dispatchers.Main){
                 viewModel.setData(data)
             }
         }
 
         CoroutineScope(Dispatchers.IO).launch {
             val countCompleted = repository.getCompletedTodos().size
-            runOnUiThread(){
+            withContext(Dispatchers.Main){
                 viewModel.setCompletedCount(countCompleted)
             }
         }
@@ -129,7 +130,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //hide the add item button when the user scrolls down
-        recyclerView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+        recyclerView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
             if (scrollY > oldScrollY) {
                 addItemBtn.hide()
             } else {
@@ -144,11 +145,13 @@ class MainActivity : AppCompatActivity() {
     fun navigateToAddTodoActivity(v: View){
         val intent = Intent(this, AddTodoActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     fun navigateToCompletedTodos(v: View){
         val intent = Intent(this, CompletedTodos::class.java)
         startActivity(intent)
+        finish()
     }
 
 //    private fun displayAlert(repository: TodoRepository){

@@ -18,6 +18,7 @@ import com.example.taskmaster.viewmodel.MainActivityData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CompletedTodos : AppCompatActivity() {
 
@@ -49,7 +50,7 @@ class CompletedTodos : AppCompatActivity() {
         //get all the completed todos
         CoroutineScope(Dispatchers.IO).launch {
             val data = repository.getCompletedTodos()
-            runOnUiThread(){
+            withContext(Dispatchers.Main){
                 viewModel.setCompleted(data)
             }
         }
@@ -58,7 +59,7 @@ class CompletedTodos : AppCompatActivity() {
         //getCompletedTodos() have to run on a background thread as they are suspend functions
         CoroutineScope(Dispatchers.IO).launch {
             val countCompleted = repository.getCompletedTodos().size
-            runOnUiThread(){
+            withContext(Dispatchers.Main){
                 viewModel.setCompletedCount(countCompleted)
             }
         }
@@ -96,5 +97,6 @@ class CompletedTodos : AppCompatActivity() {
     fun navigateToMainMenu(v: View){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }
