@@ -52,7 +52,7 @@ class TodoAdapter(items: List<Todo>, repo: TodoRepository,
 
         //set the on click listener for the checkbox
         holder.tdCheckbox.setOnClickListener{
-            //check if the checkbox is checked
+            //check if the checkbox is check  ed
             if(holder.tdCheckbox.isChecked){
                 //Log.i(TAG, "Button clicked :${task.title} ")
                 //io is because we are doing database operation

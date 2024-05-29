@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity() {
 
         //initialize the add item button
         addItemBtn = findViewById(R.id.btnAdd)
+        // val addItemBtn = findViewById <FloatingActionButton>(R.id.btnAdd)
+        // val addItemBtn: FloatingActionButton = findViewById(R.id.btnAdd)
+
         //initialize the completed button
         completedBtn = findViewById(R.id.btnCompleted)
         //initialize the count text view
@@ -52,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         msgHeader = findViewById(R.id.msg)
         //initialize the recycler view
         recyclerView = findViewById(R.id.rvTodoList)
+        recyclerView.layoutManager = LinearLayoutManager(this)
         //initialize the repository
         repository = TodoRepository(TodoDatabase.getInstance(this))
         //initialize the view model
@@ -71,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             }
             todoAdapter = TodoAdapter(it, repository, viewModel)
             recyclerView.adapter = todoAdapter
-            recyclerView.layoutManager = LinearLayoutManager(this)
         }
 
         //display the totol number of todos
