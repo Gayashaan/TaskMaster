@@ -136,8 +136,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
             if (scrollY > oldScrollY) {
                 addItemBtn.hide()
+                completedBtn.hide()
             } else {
                 addItemBtn.show()
+                completedBtn.show()
             }
         }
 
